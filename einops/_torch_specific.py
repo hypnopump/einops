@@ -55,7 +55,7 @@ class TorchJitBackend:
         for axis_position, axis_length in pos2len.items():
             x = torch.unsqueeze(x, axis_position)
             repeats[axis_position] = axis_length
-        return x.expand(repeats)
+        return x.expand(repeats).contiguous()
 
     @staticmethod
     def is_float_type(x):
